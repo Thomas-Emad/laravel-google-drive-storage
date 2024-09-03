@@ -27,6 +27,5 @@
     "google/apiclient-services": "^0.353.0",
     "laravel/framework": "^9.0"
   },
-  "minimum-stability": "stable",
-  "version": "1.0.0"
+  "minimum-stability": "stable"
 }

@@ -20,6 +20,9 @@ GOOGLE_DRIVE_CLIENT_SECRET=your_client_secret
 GOOGLE_DRIVE_REFRESH_TOKEN=your_refresh_token
 ```
 
+Obtaining a Refresh Token
+To obtain a refresh token, follow the guide provided in this article: (How to Generate Refresh Token and Use Them to Access Google API)[https://medium.com/@amanpal2072004/how-to-generate-refresh-token-and-use-them-to-access-google-api-f7565413c548].
+
 Also you need to add in file `config/filesystems.php` file:
 
 ```filesystems
