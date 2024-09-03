@@ -1,6 +1,7 @@
 {
   "name": "tes/laravel-google-drive-storage",
   "description": "A Laravel package that integrates Google Drive as a storage option, allowing seamless file uploads, folder creation, and file management directly from your Laravel application.",
+  "homepage": "https://github.com/Thomas-Emad/laravel-google-drive-storage",
   "keywords": [
     "laravel",
     "google drive",
