@@ -25,7 +25,7 @@
   ],
   "require": {
     "php": "^8.2",
-    "google/apiclient-services": ">=0.353.0",
+    "google/apiclient-services": ">=0.353.0"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
