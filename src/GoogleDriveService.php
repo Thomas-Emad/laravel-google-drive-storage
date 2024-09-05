@@ -297,7 +297,7 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
    * @return \Symfony\Component\HttpFoundation\StreamedResponse The file download response.
    * @throws \RuntimeException if an error occurs during the download.
    */
-  public static function donwload($path)
+  public static function download($path)
   {
     if (!static::$driveService) {
       static::initializeService();
