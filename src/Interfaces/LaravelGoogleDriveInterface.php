@@ -10,7 +10,7 @@ interface LaravelGoogleDriveInterface
   public static function listFilesInFolder($folderId);
   public static function getFileMetadata($fileId);
   public static function updateFileMetadata($fileId, $newName);
-  public static function donwload($path);
+  public static function download($path);
   public static function url($path);
   public static function delete($path);
 }
