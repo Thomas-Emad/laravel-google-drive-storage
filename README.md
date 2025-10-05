@@ -18,6 +18,7 @@ Ensure you have the following environment variables set in your `.env` file:
 GOOGLE_DRIVE_CLIENT_ID=your_client_id
 GOOGLE_DRIVE_CLIENT_SECRET=your_client_secret
 GOOGLE_DRIVE_REFRESH_TOKEN=your_refresh_token
+GOOGLE_DRIVE_FOLDER_ID=your_folder_id_optional
 ```
 
 Obtaining a Refresh Token
@@ -31,9 +32,10 @@ Also you need to add in file `config/filesystems.php` file:
 
     'google' => [
       'driver' => 'google',
-      'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
-      'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
-      'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+      'clientId' => env('GOOGLE_DRIVE_CLIENT_ID', ''),
+      'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET', ''),
+      'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN', ''),
+      'folderId'     = >env('GOOGLE_DRIVE_FOLDER_ID', ''),
     ]
   ],
 ```
@@ -50,8 +52,9 @@ Upload a file to Google Drive.
 use Tes\LaravelGoogleDriveStorage\GoogleDriveService;
 
 $file = $request->file('upload'); // Assuming this comes from a form
+$folderId = ''; // Optional
 
-$response = GoogleDriveService::uploadFile($file);
+$response = GoogleDriveService::uploadFile($file, $folderId);
 echo "File uploaded with ID: " . $response->id;
 ```
 
