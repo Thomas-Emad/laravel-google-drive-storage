@@ -32,9 +32,9 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
    */
   protected static function initializeService()
   {
-    $clientId = config('filesystems.disks.google.clientId') ?? env('GOOGLE_DRIVE_CLIENT_ID');
-    $clientSecret = config('filesystems.disks.google.clientSecret') ?? env('GOOGLE_DRIVE_CLIENT_SECRET');
-    $refreshToken = config('filesystems.disks.google.refreshToken') ?? env('GOOGLE_DRIVE_REFRESH_TOKEN');
+    $clientId = config('filesystems.disks.google.clientId');
+    $clientSecret = config('filesystems.disks.google.clientSecret');
+    $refreshToken = config('filesystems.disks.google.refreshToken');
 
     if ($clientId && $clientSecret && $refreshToken) {
       $client = new Client();
@@ -132,8 +132,8 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
         'mimeType' => 'application/vnd.google-apps.folder'
       ));
 
-      if ($folderId !== null || !empty(env('GOOGLE_DRIVE_FOLDER_ID'))) {
-        $fileMetadata['parents'] = [$folderId ?? env('GOOGLE_DRIVE_FOLDER_ID')];
+      if ($folderId !== null || !empty(config('filesystems.disks.google.folderId'))) {
+        $fileMetadata['parents'] = [$folderId ?? config('filesystems.disks.google.folderId')];
       }
       
       $folder = static::$driveService->files->create($fileMetadata, array(
