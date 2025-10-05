@@ -5,7 +5,7 @@ namespace Tes\LaravelGoogleDriveStorage\Interfaces;
 interface LaravelGoogleDriveInterface
 {
   public static function uploadFile($file, $folderId);
-  public static function createFolder($name);
+  public static function createFolder($name, $folderId);
   public static function search($name, $typeSearch);
   public static function listFilesInFolder($folderId);
   public static function getFileMetadata($fileId);

@@ -32,9 +32,9 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
    */
   protected static function initializeService()
   {
-    $clientId = env('GOOGLE_DRIVE_CLIENT_ID');
-    $clientSecret = env('GOOGLE_DRIVE_CLIENT_SECRET');
-    $refreshToken = env('GOOGLE_DRIVE_REFRESH_TOKEN');
+    $clientId = config('filesystems.disks.google.clientId') ?? env('GOOGLE_DRIVE_CLIENT_ID');
+    $clientSecret = config('filesystems.disks.google.clientSecret') ?? env('GOOGLE_DRIVE_CLIENT_SECRET');
+    $refreshToken = config('filesystems.disks.google.refreshToken') ?? env('GOOGLE_DRIVE_REFRESH_TOKEN');
 
     if ($clientId && $clientSecret && $refreshToken) {
       $client = new Client();
@@ -115,10 +115,11 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
    * Create a folder in Google Drive.
    *
    * @param string $name The name of the folder to be created.
+   * @param string|null $folderId The ID of the folder to upload the new folder (optional).
    * @return array The created folder's name and ID.
    * @throws \RuntimeException if an error occurs during the folder creation.
    */
-  public static function createFolder($name)
+  public static function createFolder($name, $folderId = null)
   {
     try {
       if (!static::$driveService) {
@@ -130,6 +131,11 @@ class GoogleDriveService implements LaravelGoogleDriveInterface
         'name' => $name,
         'mimeType' => 'application/vnd.google-apps.folder'
       ));
+
+      if ($folderId !== null || !empty(env('GOOGLE_DRIVE_FOLDER_ID'))) {
+        $fileMetadata['parents'] = [$folderId ?? env('GOOGLE_DRIVE_FOLDER_ID')];
+      }
+      
       $folder = static::$driveService->files->create($fileMetadata, array(
         'fields' => 'id'
       ));

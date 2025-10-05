@@ -26,7 +26,7 @@
   "require": {
     "php": "^8.2",
     "masbug/flysystem-google-drive-ext": "^2.2",
-    "illuminate/support": "^10.0 || ^11.0"
+    "illuminate/support": "^10.0 || ^11.0 || ^12.0"
   },
   "minimum-stability": "stable",
   "prefer-stable": true
